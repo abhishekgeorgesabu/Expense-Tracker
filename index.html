@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+			integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<title>Expense Tracker</title>
+	</head>
+	<body>
+		<!-- Display Expense -->
+
+		<section class="total">
+			<div class="total-expense">Rs.0</div>
+		</section>
+
+		<!-- Display the item cards -->
+
+		<section class="items">
+			<h2>Expenses</h2>
+            <div class="item-section">
+                
+            </div>
+		</section>
+
+		<!-- Appending button -->
+
+		<button class="add-btn"><i class="fa-solid fa-plus" style="color: #003049;"></i></i></button>
+
+		<!-- Modal -->
+
+		<div class="modal">
+			<div class="modal-section">
+				<div class="modal-item" >
+					Item:
+					<input type="text" placeholder="Enter the Item" id="item-name"/>
+				</div>
+				
+				<div class="modal-cost">
+					Cost:
+					<input type="number" min="1" max="10000000" placeholder="Enter the cost" id="item-cost"/>
+				</div>
+
+                <div class="modal-count">
+					Count:
+					<input type="number" value="1" min="1" max="1000" id="item-count"/>
+				</div>
+				<div class="modal-total">
+                    Total:
+                    <div class="modal-total-cost" >Rs.0</div>
+                </div>
+                <button class="submit-btn">Add</button>
+                
+			</div>
+		</div>
+
+		<script src="script.js"></script>
+	</body>
+</html>
