@@ -1,13 +1,14 @@
 let expenses = localStorage.getItem("expenses")
 	? JSON.parse(localStorage.getItem("expenses"))
 	: [];
-
+let id = localStorage.getItem("id") ? localStorage.getItem("id") : 0;
 let addBtn = document.querySelector(".add-btn");
 
 // modal
 
 let modal = document.querySelector(".modal");
 let modalData = Array.from(modal.querySelectorAll("input"));
+
 let modalTotal = modal.querySelector(".modal-total-cost");
 let modalSubmit = modal.querySelector(".modal-submit");
 
@@ -30,6 +31,16 @@ expenses.forEach((eachExpense) => {
 	updateTotalExp();
 	makeCard(eachExpense);
 });
+
+// Card
+
+let cardEditBtn = itemSection.querySelectorAll(".card-edit")
+	? Array.from(itemSection.querySelectorAll(".card-edit"))
+	: [];
+
+let cardDltBtn = itemSection.querySelectorAll(".card-dlt")
+	? Array.from(itemSection.querySelectorAll(".card-dlt"))
+	: [];
 
 // Close input tab
 
@@ -70,14 +81,46 @@ modalSubmit.addEventListener("click", () => {
 	else {
 		updateTotalExp();
 		let eachExpense = {
-			item: capitalize(itemName.value.trim()),
+			item: itemName.value.trim(),
 			cost: itemCost.value,
 			count: itemCount.value,
 			total: itemTotal.textContent.slice(1, itemTotal.textContent.length),
+			id: id,
 		};
+		id++;
 		expenses.push(eachExpense);
+
+		// pushing to local storage
 		localStorage.setItem("expenses", JSON.stringify(expenses));
+		localStorage.setItem("id", id);
+
 		makeCard(eachExpense);
+
+		// Edit button list updation
+
+		cardEditBtn.push(
+			itemSection
+				.querySelectorAll(".card-edit")
+				.item(itemSection.querySelectorAll(".card-edit").length - 1)
+		);
+		cardEdit(
+			itemSection
+				.querySelectorAll(".card-edit")
+				.item(itemSection.querySelectorAll(".card-edit").length - 1)
+		);
+
+		// Delete button list updation
+		cardDltBtn.push(
+			itemSection
+				.querySelectorAll(".card-dlt")
+				.item(itemSection.querySelectorAll(".card-dlt").length - 1)
+		);
+		cardDlt(
+			itemSection
+				.querySelectorAll(".card-dlt")
+				.item(itemSection.querySelectorAll(".card-dlt").length - 1)
+		);
+
 		modal.style.display = "none";
 		modal.querySelectorAll("input").forEach((inputBox) => {
 			inputBox.value = "";
@@ -103,8 +146,8 @@ function updateTotalExp() {
 
 function makeCard(expense) {
 	const card = document.createElement("div");
-	num = expenses.indexOf(expense);
-	card.className = `item-card ${num}`;
+	const cardId = expense.id;
+	card.className = `item-card ${cardId}`;
 	card.innerHTML = `<div class="card-data">
 	<div class="card-item">${expense.item}</div> 
 	<div class="card-cost">₹${expense.cost}</div>
@@ -118,6 +161,31 @@ function makeCard(expense) {
 	itemSection.appendChild(card);
 }
 
+//Edit item cards
+
+function cardEdit(btn) {}
+
+cardEditBtn.forEach;
+
 //Delete item cards
 
-//Edit item cards
+function cardDlt(btn) {
+	btn.addEventListener("click", () => {
+		let box = btn.parentNode.parentNode;
+		let cardId = box.classList[1];
+		itemSection.removeChild(box);
+		totalExp -=
+			+box.querySelector(".card-cost").textContent.substring(1) *
+			+box.querySelector(".card-count").textContent.substring(1);
+		updateTotalExp();
+		let bin = expenses.splice(`${cardId}`, 1);
+		localStorage.setItem("expenses", JSON.stringify(expenses));
+		console.log(bin);
+	});
+}
+
+cardDltBtn.forEach((btn) => {
+	if (btn) {
+		cardDlt(btn);
+	}
+});

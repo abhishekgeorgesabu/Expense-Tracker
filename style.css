@@ -75,7 +75,7 @@ h2 {
 
 .item-section {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
 	gap: 1rem;
 	width: 100%;
 }
@@ -126,7 +126,7 @@ h2 {
 }
 
 .card-item {
-	font-size: 2rem;
+	font-size: 1.5rem;
 	font-weight: 600;
 	color: #003049;
 	text-transform: capitalize;
@@ -135,7 +135,7 @@ h2 {
 
 .card-cost,
 .card-count {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	color: #5a5a5a;
 }
 
@@ -145,24 +145,27 @@ h2 {
 	align-items: center;
 	font-weight: 700;
 	color: #003049;
-	margin-top: 0.3rem;
 }
 
 .card-options {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
-	gap: 2rem;
-	padding: 1rem;
+	align-items: center;
+	width: 100%;
+	gap: 0.3rem;
+	padding: 0.2rem;
 }
 
 .card-edit,
 .card-dlt {
 	border: none;
-	font-size: 1.5rem;
-	padding: 1rem;
-	border-radius: 10%;
+	font-size: 1rem;
+	padding: 0.6rem;
+	border-radius: 5%;
 	color: white;
 	cursor: pointer;
+	width: 80%;
 }
 
 .card-edit {
@@ -177,6 +180,36 @@ h2 {
 .card-dlt:hover {
 	transform: translateY(-2px);
 	opacity: 0.9;
+}
+
+@media (min-width: 650px) {
+	.card-item {
+		font-size: 2rem;
+		font-weight: 600;
+		letter-spacing: 0.5px;
+	}
+	.card-cost,
+	.card-count {
+		font-size: 1.5rem;
+	}
+
+	.card-total {
+		margin: 0.3px;
+	}
+
+	.card-options {
+		gap: 2rem;
+		padding: 1rem;
+		flex-direction: row;
+	}
+
+	.card-edit,
+	.card-dlt {
+		border: none;
+		font-size: 1.5rem;
+		padding: 1rem;
+		border-radius: 5%;
+	}
 }
 
 /* Appending button */
