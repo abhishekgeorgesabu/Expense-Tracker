@@ -43,7 +43,7 @@ body {
 	text-align: center;
 	justify-content: center;
 	align-items: center;
-	font-size: 3vmax;
+	font-size: 5vmax;
 }
 
 /* Display the item cards */
@@ -70,7 +70,13 @@ h2 {
 
 @media (min-width: 768px) {
 	.item-section {
-		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		grid-template-columns: repeat(auto-fit, minmax(220px, 0.5fr));
+	}
+}
+
+@media (min-width: 1024px) {
+	.item-section {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 0.3fr));
 	}
 }
 
@@ -81,10 +87,13 @@ h2 {
 	color: #003049;
 	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	transition: transform 0.2s ease-in;
 	cursor: pointer;
+	font-size: 2rem;
+	gap: 1rem;
 }
 
 .item-card:hover {

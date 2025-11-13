@@ -1,6 +1,7 @@
 let expenses = localStorage.getItem("expenses")
 	? JSON.parse(localStorage.getItem("expenses"))
 	: [];
+console.log(expenses);
 
 let addBtn = document.querySelector(".add-btn");
 
@@ -21,7 +22,15 @@ let itemCount = modal.querySelector("#item-count");
 
 // items
 
-itemSection = document.querySelector("item-section");
+let itemSection = document.querySelector(".item-section");
+
+// make cards of already existing data in local storage
+
+expenses.forEach((eachExpense) => {
+	totalExp += +eachExpense.total;
+	updateTotalExp();
+	makeCard(eachExpense);
+});
 
 // Close input tab
 
@@ -70,6 +79,11 @@ submitBtn.addEventListener("click", () => {
 		expenses.push(eachExpense);
 		localStorage.setItem("expenses", JSON.stringify(expenses));
 		makeCard(eachExpense);
+		modal.style.display = "none";
+		modal.querySelectorAll("input").forEach((inputBox) => {
+			inputBox.value = "";
+		});
+		modalTotal.textContent = "Rs.0";
 	}
 });
 
@@ -86,6 +100,7 @@ function makeCard(expense) {
 	const card = document.createElement("div");
 	num = expenses.indexOf(expense);
 	card.className = `item-card ${num}`;
+	card.innerHTML = `<div class="card-item">${expense.item} x${expense.count}</div><div class="card-cost">Cost:Rs.${expense.cost}</div><div class="card-total">Total:Rs.${expense.total}</div>`;
 	itemSection.appendChild(card);
 	console.log(itemSection);
 }
