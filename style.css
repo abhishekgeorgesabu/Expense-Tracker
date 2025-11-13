@@ -36,6 +36,18 @@ body {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+@media (min-width: 768px) {
+	.total {
+		width: 70%;
+	}
+}
+
+@media (min-width: 1024px) {
+	.total {
+		width: 50%;
+	}
+}
+
 .total-expense {
 	flex: 1;
 	height: 100%;
@@ -68,7 +80,7 @@ h2 {
 	width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 540px) {
 	.item-section {
 		grid-template-columns: repeat(auto-fit, minmax(220px, 0.5fr));
 	}
@@ -80,24 +92,91 @@ h2 {
 	}
 }
 
+/* Card */
+
 .item-card {
 	border-radius: 0.6em;
-	height: 25vh;
+	height: auto;
 	background-color: white;
 	color: #003049;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	transition: transform 0.2s ease-in;
-	cursor: pointer;
 	font-size: 2rem;
 	gap: 1rem;
 }
 
 .item-card:hover {
 	transform: translateY(-5px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 2px solid black;
+	padding: 1rem;
+	width: 100%;
+	gap: 1rem;
+}
+
+.card-item {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #003049;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+}
+
+.card-cost,
+.card-count {
+	font-size: 1.5rem;
+	color: #5a5a5a;
+}
+
+.card-total {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	color: #003049;
+	margin-top: 0.3rem;
+}
+
+.card-options {
+	display: flex;
+	justify-content: space-between;
+	gap: 2rem;
+	padding: 1rem;
+}
+
+.card-edit,
+.card-dlt {
+	border: none;
+	font-size: 1.5rem;
+	padding: 1rem;
+	border-radius: 10%;
+	color: white;
+	cursor: pointer;
+}
+
+.card-edit {
+	background-color: #003049;
+}
+
+.card-dlt {
+	background-color: #d62828;
+}
+
+.card-edit:hover,
+.card-dlt:hover {
+	transform: translateY(-2px);
+	opacity: 0.9;
 }
 
 /* Appending button */
@@ -186,7 +265,7 @@ h2 {
 	flex: 1;
 }
 
-.submit-btn {
+.modal-submit {
 	width: 90%;
 	border: 0;
 	border-radius: 2rem;
