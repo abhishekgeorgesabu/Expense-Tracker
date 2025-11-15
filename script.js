@@ -1,7 +1,7 @@
 let expenses = localStorage.getItem("expenses")
 	? JSON.parse(localStorage.getItem("expenses"))
 	: [];
-let id = Number(localStorage.getItem("id")) ? localStorage.getItem("id") : 0;
+let id = localStorage.getItem("id") ? localStorage.getItem("id") : 0;
 let addBtn = document.querySelector(".add-btn");
 
 // modal
@@ -51,23 +51,19 @@ let closeTab = () => {
 	modalData.forEach((e) => (e.value = ""));
 	itemCount.value = 1;
 	modalTotal.textContent = "₹0";
-	modal.removeEventListener("click", closeTab);
 };
 
 // append button
 
-function modalClose() {
-	modal.addEventListener("click", (click) => {
-		if (click.target === modal) {
-			closeTab(click);
-		}
-	});
-}
+modal.addEventListener("click", (click) => {
+	if (click.target === modal) {
+		closeTab(click);
+	}
+});
 
 addBtn.addEventListener("click", (e) => {
 	e.stopPropagation();
 	modal.style.display = "flex";
-	modalClose();
 });
 
 // filing process
@@ -186,7 +182,6 @@ function editEvent(btn) {
 		const item = expenses.find((x) => Number(x.id) === Number(editingId));
 
 		modal.style.display = "flex";
-		modalClose();
 		updateModal(item);
 	});
 }
@@ -207,7 +202,7 @@ cardEditBtn.forEach((btn) => {
 
 function cardDlt(box, cardId) {
 	box.remove();
-	expenses = expenses.filter((x) => x.id !== cardId);
+	expenses = expenses.filter((x) => Number(x.id) !== Number(cardId));
 }
 
 function dltEvent(btn) {
