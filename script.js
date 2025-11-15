@@ -1,7 +1,7 @@
 let expenses = localStorage.getItem("expenses")
 	? JSON.parse(localStorage.getItem("expenses"))
 	: [];
-let id = localStorage.getItem("id") ? localStorage.getItem("id") : 0;
+let id = localStorage.getItem("id") ? Number(localStorage.getItem("id")) : 0;
 let addBtn = document.querySelector(".add-btn");
 
 // modal
@@ -11,6 +11,7 @@ let modalData = Array.from(modal.querySelectorAll("input"));
 
 let modalTotal = modal.querySelector(".modal-total-cost");
 let modalSubmit = modal.querySelector(".modal-submit");
+let modalDiscard = modal.querySelector(".modal-discard");
 
 // values
 
@@ -63,6 +64,7 @@ modal.addEventListener("click", (click) => {
 
 addBtn.addEventListener("click", (e) => {
 	e.stopPropagation();
+	modalSubmit.textContent = editingId !== null ? "Save" : "Add";
 	modal.style.display = "flex";
 });
 
@@ -137,11 +139,9 @@ modalSubmit.addEventListener("click", () => {
 	closeTab();
 });
 
-//Capitalize first letter
-
-function capitalize(item) {
-	return item.charAt(0).toUpperCase() + item.slice(1);
-}
+modalDiscard.addEventListener("click", () => {
+	closeTab();
+});
 
 // update Total expense
 
@@ -167,7 +167,7 @@ function makeCard(expense) {
 	<button class="card-edit">Edit</button>
 	<button class="card-dlt">Delete</button>
 	</div>`;
-	itemSection.appendChild(card);
+	itemSection.prepend(card);
 }
 
 //Edit item cards
@@ -180,7 +180,7 @@ function editEvent(btn) {
 		editingId = Number(box.getAttribute("card-id")); // remember which card is editing
 
 		const item = expenses.find((x) => Number(x.id) === Number(editingId));
-
+		modalSubmit.textContent = editingId !== null ? "Save" : "Add";
 		modal.style.display = "flex";
 		updateModal(item);
 	});
