@@ -55,12 +55,11 @@ Storage:
 <img width="1901" height="981" alt="Screenshot 2025-11-16 112145" src="https://github.com/user-attachments/assets/e22aa163-2769-4aed-9c42-8ca4e8647fa0" />
 
 
-
 🔧 How to Use
 
 Clone this repo:
 
-- git clone https://github.com/<your-username>/expense-tracker.git
+- git clone https://github.com/abhishekgeorgesabu/Expense-Tracker.git
 
 
 - Open the project folder
@@ -91,5 +90,6 @@ That’s it — no setup, no npm install, no backend.
 ⭐ If you found this useful
 
 Give the repo a star — it helps! 😊
+
 
 
