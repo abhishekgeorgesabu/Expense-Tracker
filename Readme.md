@@ -64,7 +64,7 @@ Clone this repo:
 
 - Open the project folder
 
-- cd expense-tracker
+- cd Expense-Tracker
 
 
 - Open index.html in your browser
@@ -90,6 +90,7 @@ That’s it — no setup, no npm install, no backend.
 ⭐ If you found this useful
 
 Give the repo a star — it helps! 😊
+
 
 
 
