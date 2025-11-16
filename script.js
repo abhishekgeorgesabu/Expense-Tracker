@@ -27,19 +27,12 @@ let itemSection = document.querySelector(".item-section");
 
 // make cards of already existing data in local storage
 
+let cardDltBtn = [];
+let cardEditBtn = [];
+
 expenses.forEach(makeCard);
 
 updateTotalExp();
-
-// Card
-
-let cardEditBtn = itemSection.querySelectorAll(".card-edit")
-	? Array.from(itemSection.querySelectorAll(".card-edit"))
-	: [];
-
-let cardDltBtn = itemSection.querySelectorAll(".card-dlt")
-	? Array.from(itemSection.querySelectorAll(".card-dlt"))
-	: [];
 
 // edit
 
@@ -52,6 +45,7 @@ let closeTab = () => {
 	modalData.forEach((e) => (e.value = ""));
 	itemCount.value = 1;
 	modalTotal.textContent = "₹0";
+	editingId = null;
 };
 
 // append button
@@ -64,7 +58,8 @@ modal.addEventListener("click", (click) => {
 
 addBtn.addEventListener("click", (e) => {
 	e.stopPropagation();
-	modalSubmit.textContent = editingId !== null ? "Save" : "Add";
+	editingId = null;
+	modalSubmit.textContent = "Add";
 	modal.style.display = "flex";
 });
 
@@ -168,6 +163,8 @@ function makeCard(expense) {
 	<button class="card-dlt">Delete</button>
 	</div>`;
 	itemSection.prepend(card);
+	dltEvent(card.querySelector(".card-dlt"));
+	editEvent(card.querySelector(".card-edit"));
 }
 
 //Edit item cards
@@ -180,7 +177,7 @@ function editEvent(btn) {
 		editingId = Number(box.getAttribute("card-id")); // remember which card is editing
 
 		const item = expenses.find((x) => Number(x.id) === Number(editingId));
-		modalSubmit.textContent = editingId !== null ? "Save" : "Add";
+		modalSubmit.textContent = "Save";
 		modal.style.display = "flex";
 		updateModal(item);
 	});
@@ -192,18 +189,13 @@ function updateModal(item) {
 	itemTotal.textContent = `₹${item.cost * item.count}`;
 }
 
-cardEditBtn.forEach((btn) => {
-	if (btn) {
-		editEvent(btn);
-	}
-});
+// cardEditBtn.forEach((btn) => {
+// 	if (btn) {
+// 		editEvent(btn);
+// 	}
+// });
 
 // Delete item cards
-
-function cardDlt(box, cardId) {
-	box.remove();
-	expenses = expenses.filter((x) => Number(x.id) !== Number(cardId));
-}
 
 function dltEvent(btn) {
 	btn.addEventListener("click", () => {
@@ -216,8 +208,13 @@ function dltEvent(btn) {
 	});
 }
 
-cardDltBtn.forEach((btn) => {
-	if (btn) {
-		dltEvent(btn);
-	}
-});
+function cardDlt(box, cardId) {
+	box.remove();
+	expenses = expenses.filter((x) => Number(x.id) !== Number(cardId));
+}
+
+// cardDltBtn.forEach((btn) => {
+// 	if (btn) {
+// 		dltEvent(btn);
+// 	}
+// });
