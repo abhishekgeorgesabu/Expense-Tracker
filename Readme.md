@@ -2,19 +2,15 @@
 
 A simple and clean expense tracking web app built using HTML, CSS, and JavaScript — no frameworks, no backend, and fully stored in LocalStorage.
 
-🚀 Live Demo
-
-(Add your link here if deployed — GitHub Pages / Netlify / Vercel)
-
 ✨ Features
 
 ✔ Add expenses with:
 
-Item name
+- Item name
 
-Cost
+- Cost
 
-Count (quantity)
+- Count (quantity)
 
 ✔ Automatically calculates total cost
 ✔ Edit existing entries
@@ -25,33 +21,33 @@ Count (quantity)
 
 🧠 What I Learned
 
-DOM manipulation in JavaScript
+- DOM manipulation in JavaScript
 
-Handling and validating form input
+- Handling and validating form input
 
-Updating UI dynamically
+- Updating UI dynamically
 
-Managing and updating state
+- Managing and updating state
 
-LocalStorage for persistence
+- LocalStorage for persistence
 
-Designing responsive layouts
+- Designing responsive layouts
 
-Structuring code more cleanly
+- Structuring code more cleanly
 
 🛠 Tech Stack
 
 Frontend:
 
-𝗛𝗧𝗠𝗟
+- 𝗛𝗧𝗠𝗟
 
-𝗖𝗦𝗦
+- 𝗖𝗦𝗦
 
-𝗝𝗮𝘃𝗮𝗦𝗰𝗿𝗶𝗽𝘁 (Vanilla)
+- 𝗝𝗮𝘃𝗮𝗦𝗰𝗿𝗶𝗽𝘁 (Vanilla)
 
 Storage:
 
-LocalStorage (no database required)
+- LocalStorage (no database required)
 
 📸 Screenshots
 
@@ -64,34 +60,35 @@ LocalStorage (no database required)
 
 Clone this repo:
 
-git clone https://github.com/<your-username>/expense-tracker.git
+- git clone https://github.com/<your-username>/expense-tracker.git
 
 
-Open the project folder
+- Open the project folder
 
-cd expense-tracker
+- cd expense-tracker
 
 
-Open index.html in your browser
+- Open index.html in your browser
 
 That’s it — no setup, no npm install, no backend.
 
 
 📦 Possible Improvements
 
-Add dark mode
+- Add dark mode
 
-Add categories (food, travel, etc.)
+- Add categories (food, travel, etc.)
 
-Add charts for spending history
+- Add charts for spending history
 
-Export data as CSV
+- Export data as CSV
 
-Convert to React version
+- Convert to React version
 
-Sync with backend or Firebase
+- Sync with backend or Firebase
 
 
 ⭐ If you found this useful
 
 Give the repo a star — it helps! 😊
+
